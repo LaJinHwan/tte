@@ -47,6 +47,7 @@ Ctrl-V : Paste line
 Ctrl-Z : Undo
 Ctrl-Y : Redo
 Ctrl-P : Pause tte (type "fg" to resume)
+Ctrl-w : One line Delete
 ```
 
 ## Current supported languages
