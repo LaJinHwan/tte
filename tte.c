@@ -1580,6 +1580,13 @@ void makeAction(ActionType t, char* str) {
     }
 }
 
+void editorDelete() {
+                char* string = NULL; 
+                if (ec.cursor_y < ec.num_rows) {
+                    makeAction(CutLine, string);
+                }
+            }
+
 void undo() {
     if(ACTIONS_LIST_MAX_SIZE == 0) return;
     ActionList* list = ec.actions;
@@ -2047,6 +2054,9 @@ void editorProcessKeypress() {
         case CTRL_KEY('y'):
             redo();
             break;
+        case CTRL_KEY('w'):
+            editorDelete();
+            break;
         default:
             makeAction(InsertChar, strndup((char*) &c, 1));
             break;
@@ -2100,6 +2110,7 @@ void printHelp() {
     printf("Ctrl-Z        Undo\n");
     printf("Ctrl-Y        Redo\n");
     printf("Ctrl-P        Pause tte (type \"fg\" to resume)\n");
+    printf("Ctrl-w        One line Delete\n");
 
     printf("\n\nOPTIONS\n-------\n\n");
     printf("Option                                          Action\n\n");
